@@ -1,6 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Merriweather:wght@700&family=Roboto&display=swap');
+
 /******* Change Box Model ***************/
 *,
 *:before,
 *:after {
   box-sizing: border-box;
+}
+
+html{
+  font-size: 62.5%;
+  font-family: "Roboto","Merriweather", sans-serif;
+}
+
+/*----SECTION HEADER----*/
+#top-header{
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Roboto","Merriweather", sans-serif;
+}
+#top-header a{
+  text-decoration: none;
+  color:black;
+  padding-bottom: 10rem;
+
+}
+.siteName{
+  font-size: 3rem;
+  font-weight: bold;
+  padding: 1rem;
+}
+#tools{
+  font-size: 1.5rem;
+  padding-right: 2rem;
+}
+
+/*----SECTION NAVIGARTION----*/
+nav {
+  background-color: black;
+  color:white;
+  margin: 1rem;
+  font-size: 1.6rem;
+}
+nav li{
+  display: inline-block;
+  margin: 0 auto;
+  padding: 1%;
+}
+
+nav ul{
+  text-align: center;
+  padding-inline-start: 0;
+}
+
+/*----SECTION INDEX----*/
+h1, h2{
+  font-family: "Merriweather", "Roboto", sans-serif;
+  font-size: 1.9rem;
+
+}
+
+.banner-car{
+  display:block;
+  margin-left:auto;
+  margin-right: auto;
+  width: 75%;
+  margin-bottom: 5rem;
+}
+
+/*DMC Delorian*/
+.dmc-delorean-box{
+  position: relative;
+  color: #01B0D3;
+}
+.dmc-delorean {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.7);
+  left: 5%;
+  top: -15px;
+  padding-bottom: 1rem;
+}
+.dmc-delorean li{
+  list-style: none;
+  margin-left: -3.5rem;
+  font-size: 1.4rem;
+}
+.dmc-delorean h2{
+  margin-bottom: -1.5rem;
+}
+.dmc-delorean ul{
+  margin-bottom: 1rem;
+}
+.dmc-delorean span{
+  font-weight: bold;
+  color: black;
+  background-color: dodgerblue;
+  padding: 8px;
+  font-size: 1.4rem;
+}
+
+
+/*DMC Delorean Reviews*/
+.dmc-delorean-reviews li{
+  margin-left: -2rem;
+  padding-bottom: 0.7rem;
+  font-size: 1.4rem;
+}
+
+/*Delorean Upgrades*/
+.photo-upgrades-delorean{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: 1.4rem;
+  text-align: center;
+}
+.upgrade-box{
+  display: block;
+  width: 95%;
+  height: 10rem;
+  background-color: #01B0D3;
+  border-style: solid;
+  text-align: center;
+  justify-content: center;
+}
+
+
+/*----SECTION FOOTER----*/
+footer{
+  font-size: 1.7rem;
+}
+
+@media screen and (min-width: 600px) {
+  body{
+    margin: 1.5rem auto;
+    max-width: 60rem;
+    background-color: white;
+    border-style: solid;
+    border-color: #13a4a4;
+    border-radius: 1rem;
+    border-width: 0.5rem;
+  }
+  html{
+    background: url("../images/site/small_check.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-size: 12px;
+  }
+  h1{
+    font-size: 2.6rem;
+  }
+
+
+
+  .dmc-delorean {
+    left: 12%;
+    top: 70px;
+  }
+
+
+
+
+  .reviews-upgrades{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 2rem;
+  }
+
+  .dmc-delorean-reviews{
+    grid-column: 3/3;
+    grid-row: 1/1;
+  }
+  .dmc-delorean-reviews li{
+    padding: 1rem;
+  }
+  .upgrades{
+    grid-column: 1/3;
+    grid-row: 1/1;
+  }
+
 }
