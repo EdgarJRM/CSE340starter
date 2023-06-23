@@ -11,6 +11,7 @@ const env = require("dotenv").config()
 const app = express()
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
+const utilities = require("./utilities/index")
 
 /* ***********************
  * View Engine and Templates
@@ -26,10 +27,26 @@ app.set("layout", "./layouts/layout") // not at views root
 app.use(require("./routes/static"))
 
 // Index route
-app.get("/", baseController.buildHome)
-
+//app.get("/", baseController.buildHome)
+app.get("/",(req, res)=>{res.json("Test").status(200)})
 // Inventory routes
 app.use("/inv", inventoryRoute)
+
+
+/* ***********************
+* Express Error Handler
+* Place after all other middleware
+*************************/
+app.use(async (err, req, res, next) => {
+  let nav = await utilities.getNav()
+  console.error(`Error at: "${req.originalUrl}": ${err.message}`)
+  res.render("errors/error", {
+    title: err.status || 'Server Error',
+    message: err.message,
+    nav
+  })
+})
+
 
 /* ***********************
  * Local Server Information
