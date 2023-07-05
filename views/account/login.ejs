@@ -1,0 +1,26 @@
+<% if (title) { %>
+  <h1><%- title %></h1>
+<% } else {res.redirect('/') } %>
+
+<%# Unity 4, activity %>
+<%- messages() %>
+
+
+<div class = "content">
+    <section id="form">
+        <form id="loginForm" action="/account/login" method="post"></form>
+            <fieldset>
+              <label for="account_email">Email</label><br>
+              <input type="email" id="account_email" name="account_email" required><br><br>
+              <label for="account_password">Password:</label><br>
+              <input type="password" id="account_password" name="account_password" required pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"><br><br>
+              <span>Password must be minimum off 12 characters and include 1 capital letter,
+                1 number and 1 special character.
+              </span><br><br>
+              <input type="button" value="Show Password"><br><br>
+              <input type="submit" value="Login">
+            </fieldset>
+        </form>
+        <p>No account? <b><a href="/account/register">Sing-up</a><b></p>
+    </section>
+</div>

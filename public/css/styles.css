@@ -131,6 +131,17 @@ footer{
   font-size: 1.7rem;
 }
 
+
+/* Form*/
+#BtnRegister input:required:invalid, input:focus:invalid {
+  background-color: crimson;
+}
+
+#BtnRegister input:required:valid, input:focus:valid {
+  background-color: greenyellow;
+}
+
+
 @media screen and (min-width: 600px) {
   body{
     margin: 1.5rem auto;
