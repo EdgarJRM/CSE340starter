@@ -20,16 +20,15 @@ invCont.buildByClassificationId = async function (req, res, next) {
   })
 }
 
-
 /* ***************************
  *  Build inventory by single view
  * ************************** */
-invView.buildBySingleViewId = async function (req, res, next) {
+invCont.buildBySingleViewId = async function (req, res, next) {
   const inv_id = req.params.inventoryId
-  const data = await invModel.getInventoryByClassificationId(inv_id)
+  const data = await invModel.getInventoryByInvId(inv_id)
   const grid = await utilities.buildSingleViewGrid(data)
   const className = data[0].inv_id
-  res.render("./inventory/classification", {
+  res.render("./inventory/singleview", {
     title: className + " vehicles",
     nav,
     grid,
