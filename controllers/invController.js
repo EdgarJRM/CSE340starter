@@ -2,7 +2,6 @@ const invModel = require("../models/inventory-model")
 const utilities = require("../utilities/")
 
 const invCont = {}
-const invView = {}
 
 /* ***************************
  *  Build inventory by classification view
@@ -27,10 +26,23 @@ invCont.buildBySingleViewId = async function (req, res, next) {
   const inv_id = req.params.inventoryId
   const data = await invModel.getInventoryByInvId(inv_id)
   const grid = await utilities.buildSingleViewGrid(data)
-  const className = data[0].inv_id
+  let nav = await utilities.getNav()
+  const className = data[0].inv_year + ' ' + data[0].inv_make + ' ' + data[0].inv_model
   res.render("./inventory/singleview", {
-    title: className + " vehicles",
+    title: className,
     nav,
+    grid,
+  })
+}
+
+/* ***************************
+ *  Build error Link
+ * ************************** */
+invCont.errorBoom = async function (req, res, next) {
+  const grid = ""
+  // inventory/singleview need the nav => error
+  res.render("./inventory/singleview", {
+    title: "HI",
     grid,
   })
 }
