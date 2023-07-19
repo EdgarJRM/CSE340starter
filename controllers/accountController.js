@@ -78,4 +78,16 @@ async function registerAccount(req, res) {
   }
 }
 
-module.exports = { buildLogin, buildRegister, registerAccount }
+/* ****************************************
+*  Deliver Request Quote view
+* *************************************** */
+async function buildQuote(req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("account/requestQuote", {
+    title: "Request Quote",
+    nav,
+    errors: null,
+  })
+}
+
+module.exports = { buildLogin, buildRegister, registerAccount, buildQuote}

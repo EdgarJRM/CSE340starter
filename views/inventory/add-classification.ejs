@@ -1,0 +1,20 @@
+<% if (title) { %>
+    <h1><%- title %></h1>
+  <% } else {res.redirect('/') } %>
+  
+<%# Unity 4, activity %>
+<%- messages() %>
+
+<div class = "content">
+    <section id="form">
+        <p>FIELD IS REQUIRED</p>
+        <form id="loginForm" action="/account/login" method="post"></form>
+            <fieldset>
+                <label>Classification Name</label><br><br>
+                <label>NAME MUST BE ALPHABETIC CHARACTARS ONLY</label><br><br>
+                <input type="text" id="account_firstname" name="account_firstname" size="25" required pattern="[A-Za-z]{1,10}" autofocus value="<%= locals.account_firstname %>"><br><br>
+                <input type="submit" value="Add Classification"><br><br>
+            </fieldset>
+        </form>
+    </section>
+</div>

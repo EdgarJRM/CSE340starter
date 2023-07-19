@@ -59,6 +59,14 @@ nav ul{
   padding-inline-start: 0;
 }
 
+
+main{
+  width: 95%;
+  margin: 0 auto;
+  padding-bottom: 1rem;
+}
+
+
 /*----SECTION INDEX----*/
 h1, h2{
   font-family: "Merriweather", "Roboto", sans-serif;
@@ -134,6 +142,9 @@ h1, h2{
 /*----SECTION FOOTER----*/
 footer{
   font-size: 1.7rem;
+  width: 95%;
+  margin: 0 auto;
+  padding-bottom: 1rem;
 }
 
 
@@ -187,7 +198,7 @@ footer{
 
 /*----Individual view of the vehicles----*/
 #viewCar img{
- width: 100%;
+ width: 95%;
  margin: 1rem;
 }
 #viewCar p{
@@ -196,7 +207,7 @@ footer{
 }
 #viewCar .viewDetails{
   background-color: lavender;
- }
+}
 
 @media screen and (min-width: 600px) {
   body{

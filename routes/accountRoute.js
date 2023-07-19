@@ -33,4 +33,8 @@ router.post(
     }
 )
 
+// Deliver Request Quote Views
+// Unit 6, Request Quote Activity
+router.get("/quote", utilities.handleErrors(accountController.buildQuote));
+
 module.exports = router;

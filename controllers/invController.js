@@ -36,6 +36,39 @@ invCont.buildBySingleViewId = async function (req, res, next) {
 }
 
 /* ***************************
+ *  Build Vehicle Management view
+ * ************************** */
+invCont.vehicleManagement = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("./inventory/management", {
+    title: "Vehicle Management",
+    nav,
+  })
+}
+
+/* ***************************
+ *  Build Add Classification view
+ * ************************** */
+invCont.addclassification = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("./inventory/add-classification", {
+    title: "Add New Classification",
+    nav,
+  })
+}
+
+/* ***************************
+ *  Build Add New Vehicle view
+ * ************************** */
+invCont.addNewVehicle = async function (req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("./inventory/add-inventory", {
+    title: "Add New Vehicle",
+    nav,
+  })
+}
+
+/* ***************************
  *  Build error Link
  * ************************** */
 invCont.errorBoom = async function (req, res, next) {
