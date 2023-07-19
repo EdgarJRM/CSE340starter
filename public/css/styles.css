@@ -157,6 +157,16 @@ footer{
   background-color: greenyellow;
 }
 
+.content{
+  width: 95%;
+  background-color:royalblue;
+  margin: 0 auto;
+  border-style: solid;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  font-size: medium;
+}
+
 
 /*----INVENTORY CLASSIFICATION----*/
 #inv-display{
@@ -256,6 +266,11 @@ footer{
     padding: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+
+/*----Form----*/
+  .content{
+    max-width: 30rem;
   }
 
 }
