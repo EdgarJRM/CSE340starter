@@ -104,7 +104,6 @@ Util.getQuoteVehicle= async function (req, res, next) {
   let list = "<label>Vehicle: <br><input list='quote_model' name='quote_model' placeholder = 'Choose a Vehicle' autocomplete='off'></label><br><br>"
   list += "<datalist id='quote_model'>"
   data.rows.forEach((row) => {
-    console.log(row.inv_model)
     list += "<option value=" + row.inv_model + ">"
     list += "</option>"
   })
