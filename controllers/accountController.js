@@ -99,6 +99,7 @@ async function buildQuote(req, res, next) {
 async function registerQuote(req, res) {
   let nav = await utilities.getNav()
   let grid = await utilities.getQuoteVehicle()
+
   const {quote_firstname, quote_lastname, quote_email, quote_model} = req.body
 
   const regResult = await accountModel.registerRequestQuote(
@@ -117,6 +118,7 @@ async function registerQuote(req, res) {
       title: "Request Quote",
       nav,
       grid,
+      errors: null,
     })
   } else {
     req.flash("notice", "Sorry, the registration failed.")
@@ -124,6 +126,7 @@ async function registerQuote(req, res) {
       title: "Request Quote",
       nav,
       grid,
+      errors: null,
     })
   }
 }
