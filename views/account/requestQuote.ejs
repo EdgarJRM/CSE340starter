@@ -14,27 +14,17 @@
 <% } %>
 
 <div class = "content">
-    <section id="form">
-        <form id="registerForm" action="/account/register" method="post">
-            <p>All fields are required.</p>
+        <p>All fields are required.</p>
+        <form id="requestQuoteForm" action="/account/quote" method="post">
             <fieldset>
-                <label for="account_firstname">First name:</label><br>
-                <input type="text" id="account_firstname" name="account_firstname" size="10" required value="<%= locals.account_firstname %>"><br><br>
-                <label for="account_lastname">Last name:</label><br>
-                <input type="text" id="account_lastname" name="account_lastname" required value="<%= locals.account_lastname %>"><br><br>
-                <label for="account_email">Email Address:</label><br>
-                <input type="email" id="account_email" name="account_email" required value="<%= locals.account_email %>"><br><br>
-                <label for="vehicles">Vehicle:</label><br>
-                <input list="vehicles">
-                <datalist id="vehicles" required>
-                    <option value="vehicles 1">
-                    <option value="vehicles 2">
-                    <option value="vehicles 3">
-                    <option value="vehicles 4">
-                    <option value="vehicles 5">
-                </datalist><br><br>
+                <label for="quote_firstname">First name:</label><br>
+                <input type="text" id="quote_firstname" name="quote_firstname" size="10" required value="<%= locals.quote_firstname %>"><br><br>
+                <label for="quote_lastname">Last name:</label><br>
+                <input type="text" id="quote_lastname" name="quote_lastname" required value="<%= locals.quote_lastname %>"><br><br>
+                <label for="quote_email">Email Address:</label><br>
+                <input type="email" id="quote_email" name="quote_email" required value="<%= locals.quote_email %>"><br><br>
+                <%- grid %>
                 <input id="BtnRegister" type="submit" value="Request Quote">
             </fieldset>
         </form>
-    </section>
 </div>

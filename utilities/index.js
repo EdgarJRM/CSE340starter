@@ -83,25 +83,35 @@ Util.buildSingleViewGrid = async function(data){
 /* ************************
  * Constructs the nav HTML unordered list
  ************************** */
-Util.getNav = async function (req, res, next) {
+Util.getClassificationId= async function (req, res, next) {
   let data = await invModel.getClassifications()
-  let list = "<ul>"
-  list += '<li><a href="/" title="Home page">Home</a></li>'
+  let list = "<label>Classification <br><input list='classification_id' name='classification_id' placeholder = 'Choose a Classification' autocomplete='off'></label><br><br>"
+  list += "<datalist id='classification_id'>"
   data.rows.forEach((row) => {
-    list += "<li>"
-    list +=
-      '<a href="/inv/type/' +
-      row.classification_id +
-      '" title="See our inventory of ' +
-      row.classification_name +
-      ' vehicles">' +
-      row.classification_name +
-      "</a>"
-    list += "</li>"
+    list += "<option value=" + row.classification_id + ">" + row.classification_name
+    list += "</option>"
   })
-  list += "</ul>"
+  list += "</datalist>"
   return list
 }
+
+
+/* ************************
+ * Constructs the nav HTML unordered list
+ ************************** */
+Util.getQuoteVehicle= async function (req, res, next) {
+  let data = await invModel.getInventoryVehicle()
+  let list = "<label>Vehicle: <br><input list='quote_model' name='quote_model' placeholder = 'Choose a Vehicle' autocomplete='off'></label><br><br>"
+  list += "<datalist id='quote_model'>"
+  data.rows.forEach((row) => {
+    console.log(row.inv_model)
+    list += "<option value=" + row.inv_model + ">"
+    list += "</option>"
+  })
+  list += "</datalist>"
+  return list
+}
+
 
 /* ****************************************
  * Middleware For Handling Errors

@@ -5,33 +5,38 @@
 <%# Unity 4, activity %>
 <%- messages() %>
 
+<% if (errors) { %>
+    <ul class="notice">
+    <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+    <%  }) %>
+   </ul>
+<% } %>
+
 <div class = "content">
-<section id="form">
     <p>ALL FIELDS ARE REQUIRED</p>
-    <form id="registerForm" action="/account/register" method="post">
+    <form id="addNewVehicleForm" action="/inv/addinventory" method="post">
         <fieldset>
-            <label for="">Classification</label><br>
-            <input type="text" id="" name="" required><br><br>
-            <label for="">Make</label><br>
-            <input type="text" id="" name="" required pattern="[A-Za-z]{3,10}"><br><br>
-            <label for="">Model</label><br>
-            <input type="text" id="" name="" required pattern="[A-Za-z]{3,10}"><br><br>
-            <label for="">Description</label><br>
-            <textarea name="message" style="width:250px; height:50px;"></textarea><br><br>
-            <label for="">Image Path</label><br>
-            <input type="text" id="" name="" value="/images/vehicles/no-image.png" style="width:250px"><br><br>
-            <label for="">Thumbnail Path</label><br>
-            <input type="text" id="" name="" value="/images/vehicles/no-image-tn.png" style="width:250px"><br><br>
-            <label for="">Price</label><br>
-            <input type="number" id="" name="" ><br><br>
-            <label for="">Year</label><br>
-            <input type="text" id="" name="" pattern="[0-9]{4}" title="4-digit year"><br><br>
-            <label for="">Miles</label><br>
-            <input type="text" id="" name="" pattern="[0-9]{1,7}"><br><br>
-            <label for="">Color</label><br>
-            <input type="text" id="" name="" pattern="[A-Za-z]{3,10}"><br><br>
+            <%- grid %>
+            <label for="inv_make">Make</label><br>
+            <input type="text" id="inv_make" name="inv_make" required pattern="[A-Za-z]{3,10}" placeholder="Min of 3 characters" value="<%= locals.inv_make %>"><br><br>
+            <label for="inv_model">Model</label><br>
+            <input type="text" id="inv_model" name="inv_model" required pattern="[A-Za-z]{3,10}" placeholder="Min of 3 characters" value="<%= locals.inv_model %>"><br><br>
+            <label for="inv_description">Description</label><br>
+            <textarea id= "inv_description" name="inv_description" style="width:250px; height:50px;" value="<%= locals.inv_description %>"></textarea><br><br>
+            <label for="inv_image">Image Path</label><br>
+            <input type="text" id="inv_image" name="inv_image" value="/images/vehicles/no-image.png" style="width:250px" value="<%= locals.inv_image %>"><br><br>
+            <label for="inv_thumbnail">Thumbnail Path</label><br>
+            <input type="text" id="inv_thumbnail" name="inv_thumbnail" value="/images/vehicles/no-image-tn.png" style="width:250px" value="<%= locals.inv_thumbnail %>"><br><br>
+            <label for="inv_price">Price</label><br>
+            <input type="number" id="inv_price" name="inv_price" placeholder="Digits Only" value="<%= locals.inv_price %>"><br><br>
+            <label for="inv_year">Year</label><br>
+            <input type="text" id="inv_year" name="inv_year" pattern="[0-9]{4}" placeholder="4-digit year" value="<%= locals.inv_year %>"><br><br>
+            <label for="inv_miles">Miles</label><br>
+            <input type="text" id="inv_miles" name="inv_miles" pattern="[0-9]{1,7}" placeholder="Digits Only" value="<%= locals.inv_miles %>"><br><br>
+            <label for="inv_color">Color</label><br>
+            <input type="text" id="inv_color" name="inv_color" pattern="[A-Za-z]{3,10}" value="<%= locals.inv_color %>"><br><br>
             <input id="BtnRegister" type="submit" value="Add Vehicle">
         </fieldset>
     </form>
-</section>
 </div>

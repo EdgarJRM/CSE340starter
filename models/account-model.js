@@ -26,4 +26,32 @@ async function checkExistingEmail(account_email){
   }
 }
 
-module.exports = {registerAccount, checkExistingEmail};
+/* **********************
+ *   Check for existing email
+ * ********************* */
+async function checkExistingEmailQuote(quote_email){
+  try {
+    const sql = "SELECT * FROM quote WHERE quote_email = $1"
+    const email = await pool.query(sql, [quote_email])
+    return email.rowCount
+  } catch (error) {
+    return error.message
+  }
+}
+
+
+/* *****************************
+*   Register Request Quote
+*   Unit 4, Process Registration Acttivity
+* *************************** */
+async function registerRequestQuote(quote_firstname, quote_lastname, quote_email, quote_model){
+  try {
+    const sql = "INSERT INTO quote (quote_firstname, quote_lastname, quote_email, quote_model) VALUES ($1, $2, $3, $4) RETURNING *"
+    return await pool.query(sql, [quote_firstname, quote_lastname, quote_email, quote_model])
+  } catch (error) {
+    return error.message
+  }
+}
+
+
+module.exports = {registerAccount, checkExistingEmail, registerRequestQuote, checkExistingEmailQuote};

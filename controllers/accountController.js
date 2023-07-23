@@ -83,11 +83,50 @@ async function registerAccount(req, res) {
 * *************************************** */
 async function buildQuote(req, res, next) {
   let nav = await utilities.getNav()
+  let grid = await utilities.getQuoteVehicle()
   res.render("account/requestQuote", {
     title: "Request Quote",
     nav,
+    grid,
     errors: null,
   })
 }
 
-module.exports = { buildLogin, buildRegister, registerAccount, buildQuote}
+
+/* ****************************************
+*  Process Request Quote
+* *************************************** */
+async function registerQuote(req, res) {
+  let nav = await utilities.getNav()
+  let grid = await utilities.getQuoteVehicle()
+  const {quote_firstname, quote_lastname, quote_email, quote_model} = req.body
+
+  const regResult = await accountModel.registerRequestQuote(
+    quote_firstname,
+    quote_lastname,
+    quote_email,
+    quote_model,
+  )
+
+  if (regResult) {
+    req.flash(
+      "notice",
+      `Congratulations ${quote_firstname} the request for quotation has been registered. Soon we will be sending an email with the information.`
+    )
+    res.status(201).render("./account/requestQuote", {
+      title: "Request Quote",
+      nav,
+      grid,
+    })
+  } else {
+    req.flash("notice", "Sorry, the registration failed.")
+    res.status(501).render("account/requestQuote", {
+      title: "Request Quote",
+      nav,
+      grid,
+    })
+  }
+}
+
+
+module.exports = { buildLogin, buildRegister, registerAccount, buildQuote, registerQuote}

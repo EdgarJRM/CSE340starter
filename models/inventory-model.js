@@ -40,4 +40,41 @@ async function getInventoryByInvId(inv_id) {
   }
 }
 
-module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByInvId};
+/* *****************************
+*   Register new Classification
+*   Unit 4, Process new Classification Acttivity
+* *************************** */
+async function registerClassificationName(classification_name){
+  try {
+    const sql = "INSERT INTO public.classification (classification_name) VALUES ($1) RETURNING *"
+    return await pool.query(sql, [classification_name])
+  } catch (error) {
+    return error.message
+  }
+}
+
+
+/* *****************************
+*   Register new Vehicle
+*   Unit 4, Process Registration New Vehicle
+* *************************** */
+async function registerNewVehicle(classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, 
+  inv_price, inv_year, inv_miles, inv_color){
+  try {
+    const sql = "INSERT INTO public.inventory (classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, inv_price, inv_year, inv_miles, inv_color) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *"
+    return await pool.query(sql, [classification_id, inv_make, inv_model, inv_description, inv_image, inv_thumbnail, 
+      inv_price, inv_year, inv_miles, inv_color])
+  } catch (error) {
+    return error.message
+  }
+}
+
+
+/* ***************************
+ *  Get all classification data
+ * ************************** */
+async function getInventoryVehicle(){
+  return await pool.query("SELECT * FROM public.inventory")
+}
+
+module.exports = {getClassifications, getInventoryByClassificationId, getInventoryByInvId, registerClassificationName, registerNewVehicle, getInventoryVehicle};

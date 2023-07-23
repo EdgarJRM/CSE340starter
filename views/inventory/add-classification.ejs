@@ -5,16 +5,22 @@
 <%# Unity 4, activity %>
 <%- messages() %>
 
+<% if (errors) { %>
+    <ul class="notice">
+    <% errors.array().forEach(error => { %>
+        <li><%= error.msg %></li>
+    <%  }) %>
+   </ul>
+<% } %>
+
 <div class = "content">
-    <section id="form">
         <p>FIELD IS REQUIRED</p>
-        <form id="loginForm" action="/account/login" method="post"></form>
+        <form id="addclassificationForm" action="/inv/addclassification" method="post">
             <fieldset>
-                <label>Classification Name</label><br><br>
+                <label for="classification_name">Classification Name</label><br><br>
                 <label>NAME MUST BE ALPHABETIC CHARACTARS ONLY</label><br><br>
-                <input type="text" id="account_firstname" name="account_firstname" size="25" required pattern="[A-Za-z]{1,10}" autofocus value="<%= locals.account_firstname %>"><br><br>
+                <input type="text" id="classification_name" name="classification_name" placeholder="min 3 character" size="25" required pattern="[A-Za-z]{3,10}" value="<%= locals.classification_name %>"><br><br>
                 <input type="submit" value="Add Classification"><br><br>
             </fieldset>
         </form>
-    </section>
 </div>

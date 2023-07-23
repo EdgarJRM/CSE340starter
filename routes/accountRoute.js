@@ -37,4 +37,13 @@ router.post(
 // Unit 6, Request Quote Activity
 router.get("/quote", utilities.handleErrors(accountController.buildQuote));
 
+// Process Request Data
+// Unit 4, process Request Quote activity
+router.post(
+  "/quote",
+  regValidate.registationRequestQuote(),
+  regValidate.checkRequestQuote,
+  utilities.handleErrors(accountController.registerQuote)
+)
+
 module.exports = router;
