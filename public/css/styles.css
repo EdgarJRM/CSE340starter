@@ -168,6 +168,10 @@ footer{
   color: #fff;
 }
 
+.content a {
+  color: #fff;
+}
+
 
 /*----INVENTORY CLASSIFICATION----*/
 #inv-display{
